@@ -23,6 +23,8 @@ return {
         "tinymist",
         "clangd",
         "omnisharp",
+        "csharpier",
+        "netcoredbg",
       })
     end,
   },
