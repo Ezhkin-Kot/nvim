@@ -1,13 +1,23 @@
 return {
   {
-    "stevearc/conform.nvim",
-    -- event = 'BufWritePre', -- uncomment for format on save
-    opts = require "configs.conform",
+    "nvim-treesitter/nvim-treesitter",
+    event = { "BufReadPre", "BufNewFile" },
+    config = function()
+      require "configs.treesitter"
+    end,
   },
 
-  -- These are some examples, uncomment them if you want to see them work!
+  {
+    "stevearc/conform.nvim",
+    event = 'BufWritePre', -- format on save
+    config = function()
+      require "configs.conform"
+    end,
+  },
+
   {
     "neovim/nvim-lspconfig",
+    event = { "BufReadPre", "BufNewFile" },
     config = function()
       require "configs.lspconfig"
     end,
@@ -20,33 +30,43 @@ return {
     opts = function(_, opts)
       opts.ensure_installed = opts.ensure_installed or {}
       vim.list_extend(opts.ensure_installed, {
+        "html",
+        "cssls",
         "tinymist",
         "clangd",
         "omnisharp",
         "csharpier",
-        "netcoredbg",
+        "lua-language-server",
+        "gopls",
       })
     end,
   },
 
   {
-    "rcarriga/nvim-dap-ui",
+    "williamboman/mason-lspconfig.nvim",
     event = "VeryLazy",
-    dependencies = "mfussenegger/nvim-dap",
+    dependencies = { "nvim-lspconfig" },
     config = function()
-      local dap = require "dap"
-      local dapui = require "dapui"
-      dapui.setup()
-      dap.listeners.after.event_initialized["dapui_config"] = function()
-        dapui.open()
-      end
-      dap.listeners.before.event_terminated["dapui_config"] = function()
-        dapui.close()
-      end
-      dap.listeners.before.event_exited["dapui_config"] = function()
-        dapui.close()
-      end
+      require "configs.mason-lspconfig"
     end,
+  },
+
+  {
+    "zapling/mason-conform.nvim",
+    event = "VeryLazy",
+    dependencies = { "conform.nvim" },
+    config = function()
+      require "configs.mason-conform"
+    end,
+  },
+
+  -- DAP
+  {
+    "mfussenegger/nvim-dap",
+    config = function()
+      require "configs.nvim-dap"
+    end,
+    lazy = true,
   },
 
   {
@@ -56,22 +76,19 @@ return {
       "williamboman/mason.nvim",
       "mfussenegger/nvim-dap",
     },
-    opts = {
-      handlers = {},
-      ensure_installed = {
-        "clangd",
-        "clang-format",
-        "codelldb",
-        "air",
-      },
+    config = function()
+      require "configs.mason-dap"
+    end,
+    {
+      "rcarriga/nvim-dap-ui",
+      event = "VeryLazy",
+      config = function()
+        require "configs.nvim-dap-ui"
+      end,
     },
-  },
-  {
-    "mfussenegger/nvim-dap",
-    lazy = true,
-  },
-  {
-    "nvim-neotest/nvim-nio",
+    {
+      "nvim-neotest/nvim-nio",
+    },
   },
 
   -- test new blink
