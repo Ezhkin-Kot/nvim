@@ -8,37 +8,10 @@ return {
   },
 
   {
-    "stevearc/conform.nvim",
-    event = 'BufWritePre', -- format on save
-    config = function()
-      require "configs.conform"
-    end,
-  },
-
-  {
     "neovim/nvim-lspconfig",
     event = { "BufReadPre", "BufNewFile" },
     config = function()
       require "configs.lspconfig"
-    end,
-  },
-
-  -- Mason
-  {
-    "williamboman/mason.nvim",
-    lazy = true,
-    opts = function(_, opts)
-      opts.ensure_installed = opts.ensure_installed or {}
-      vim.list_extend(opts.ensure_installed, {
-        "html",
-        "cssls",
-        "tinymist",
-        "clangd",
-        "omnisharp",
-        "csharpier",
-        "lua-language-server",
-        "gopls",
-      })
     end,
   },
 
@@ -48,6 +21,14 @@ return {
     dependencies = { "nvim-lspconfig" },
     config = function()
       require "configs.mason-lspconfig"
+    end,
+  },
+
+  {
+    "stevearc/conform.nvim",
+    event = 'BufWritePre', -- format on save
+    config = function()
+      require "configs.conform"
     end,
   },
 
