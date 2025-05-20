@@ -7,7 +7,7 @@ lspconfig.servers = {
   "tinymist",
   "clangd",
   "omnisharp",
-  -- "gopls",
+  "gopls",
   -- "html",
   -- "cssls",
 }
@@ -17,11 +17,11 @@ local on_attach = base.on_attach
 local on_init = base.on_init
 local capabilities = base.capabilities
 
-lspconfig.omnisharp.setup({
-  cmd = { "omnisharp" },
-  filetypes = { "cs", "vb" },
-  root_dir = lspconfig.util.root_pattern("*.sln", "*.csproj", ".git"),
-})
+-- lspconfig.omnisharp.setup({
+--   cmd = { "omnisharp" },
+--   filetypes = { "cs", "vb" },
+--   root_dir = lspconfig.util.root_pattern("*.sln", "*.csproj", ".git"),
+-- })
 
 lspconfig.clangd.setup {
   on_attach = function(client, bufnr)
@@ -34,28 +34,28 @@ lspconfig.clangd.setup {
   capabilities = capabilities,
 }
 
--- lspconfig.gopls.setup({
---     on_attach = function(client, bufnr)
---         client.server_capabilities.documentFormattingProvider = false
---         client.server_capabilities.documentRangeFormattingProvider = false
---         on_attach(client, bufnr)
---     end,
---     on_init = on_init,
---     capabilities = capabilities,
---     cmd = { "gopls" },
---     filetypes = { "go", "gomod", "gotmpl", "gowork" },
---     root_dir = lspconfig.util.root_pattern("go.work", "go.mod", ".git"),
---     settings = {
---         gopls = {
---             analyses = {
---                 unusedparams = true,
---             },
---             completeUnimported = true,
---             usePlaceholders = true,
---             staticcheck = true,
---         },
---     },
--- })
+lspconfig.gopls.setup({
+    on_attach = function(client, bufnr)
+        client.server_capabilities.documentFormattingProvider = false
+        client.server_capabilities.documentRangeFormattingProvider = false
+        on_attach(client, bufnr)
+    end,
+    on_init = on_init,
+    capabilities = capabilities,
+    cmd = { "gopls" },
+    filetypes = { "go", "gomod", "gotmpl", "gowork" },
+    root_dir = lspconfig.util.root_pattern("go.work", "go.mod", ".git"),
+    settings = {
+        gopls = {
+            analyses = {
+                unusedparams = true,
+            },
+            completeUnimported = true,
+            usePlaceholders = true,
+            staticcheck = true,
+        },
+    },
+})
 
 lspconfig.lua_ls.setup({
     on_attach = on_attach,
