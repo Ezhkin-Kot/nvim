@@ -58,6 +58,17 @@ return {
     end,
   },
 
+  {
+    "stevearc/dressing.nvim",
+    lazy = false,
+    opts = {},
+  },
+
+  {
+    "Exafunction/windsurf.vim",
+    event = 'BufEnter'
+  },
+
   -- DAP
   {
     "mfussenegger/nvim-dap",
