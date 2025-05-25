@@ -3,6 +3,7 @@ local options = {
     lua = { "stylua" },
     cpp = { "clang-format" },
     c_sharp = { "csharpier" },
+    go = { "gofumpt", "goimports-reviser", "golines" },
     -- css = { "prettier" },
     -- html = { "prettier" },
   },
