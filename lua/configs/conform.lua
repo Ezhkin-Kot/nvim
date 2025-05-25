@@ -33,7 +33,7 @@ local options = {
             "--column-width", "80",
             "--line-endings", "Unix",
             "--indent-type", "Spaces",
-            "--indent-width", "4",
+            "--indent-width", "2",
             "--quote-style", "AutoPreferDouble",
         },
     },
