@@ -1,8 +1,6 @@
 local lint = require "lint"
 
-lint.linters_by_ft = {
-
-}
+lint.linters_by_ft = {}
 
 lint.linters.luacheck.args = {
   "--globals",

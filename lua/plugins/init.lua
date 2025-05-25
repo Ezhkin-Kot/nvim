@@ -43,7 +43,7 @@ return {
 
   {
     "stevearc/conform.nvim",
-    event = 'BufWritePre', -- format on save
+    event = "BufWritePre", -- format on save
     config = function()
       require "configs.conform"
     end,
@@ -66,7 +66,7 @@ return {
 
   {
     "Exafunction/windsurf.vim",
-    event = 'BufEnter'
+    event = "BufEnter",
   },
 
   -- DAP

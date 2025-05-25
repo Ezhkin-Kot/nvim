@@ -23,20 +23,20 @@ local options = {
     },
     -- Golang
     ["goimports-reviser"] = {
-        prepend_args = { "-rm-unused" },
+      prepend_args = { "-rm-unused" },
     },
     golines = {
-        prepend_args = { "--max-len=80" },
+      prepend_args = { "--max-len=80" },
     },
     -- Lua
     stylua = {
-        prepend_args = {
-            "--column-width", "80",
-            "--line-endings", "Unix",
-            "--indent-type", "Spaces",
-            "--indent-width", "2",
-            "--quote-style", "AutoPreferDouble",
-        },
+      prepend_args = {
+        "--column-width", "80",
+        "--line-endings", "Unix",
+        "--indent-type", "Spaces",
+        "--indent-width", "2",
+        "--quote-style", "AutoPreferDouble",
+      },
     },
   },
 
