@@ -12,6 +12,19 @@ map("n", "<S-F5>", function() require("dap").terminate() end, { desc = "DAP: Ter
 map("n", "<F9>", function() require("dap").toggle_breakpoint() end, { desc = "DAP: Toggle Breakpoint" })
 map("n", "<leader>dr", function() require("dap").restart() end, { desc = "DAP: Restart" })
 
+-- Windsurf
+vim.g.codeium_disable_bindings = 1
+vim.g.codeium_no_map_tab = 1
+
+-- Delete codeium default tab mapping
+map("i", "<Tab>", function() return "\t" end, { expr = true, noremap = true })
+
+map('i', '<C-s>', function () return vim.fn['codeium#Accept']() end, { expr = true, silent = true })
+map('i', '<C-;>', function() return vim.fn['codeium#CycleCompletions'](1) end, { expr = true, silent = true })
+map('i', '<C-,>', function() return vim.fn['codeium#CycleCompletions'](-1) end, { expr = true, silent = true })
+map('i', '<c-x>', function() return vim.fn['codeium#Clear']() end, { expr = true, silent = true })
+
+
 map("n", ";", ":", { desc = "CMD enter command mode" })
 map("i", "jk", "<ESC>")
 
