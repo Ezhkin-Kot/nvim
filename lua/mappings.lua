@@ -37,7 +37,7 @@ map("i", "<Tab>", function()
   return "\t"
 end, { expr = true, noremap = true })
 
-map("i", "<C-s>", function()
+map("i", "<C-a>", function()
   return vim.fn["codeium#Accept"]()
 end, { expr = true, silent = true })
 map("i", "<C-;>", function()
