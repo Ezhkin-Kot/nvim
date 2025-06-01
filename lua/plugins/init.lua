@@ -65,7 +65,7 @@ return {
   },
 
   {
-    "Exafunction/windsurf.vim",
+    "Exafunction/windsurf.nvim",
     event = "BufEnter",
   },
 
