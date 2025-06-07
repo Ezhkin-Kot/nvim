@@ -8,10 +8,22 @@ This is my config for [Neovim v0.11.1](https://github.com/neovim/neovim) powered
 
 # Features
 - All features of latest NvChad
-- .cpp and .cs files autocompletion
-- .cpp and .cs files syntax highlighting
-- .cpp and .cs files autoformatting on save
-- .cpp and .cs debuggers:
+- Go
+    - gopls LSP
+    - gofumpt, goimports-reviser and golines formatters
+- C++
+    - clangd LSP
+    - clang-format formatter
+- C#
+    - omnisharp LSP
+    - csharpier formatter
+- Typst
+    - tinymist LSP
+    - typstyle formatter
+- Lua
+    - lua-language-server LSP
+    - stylua formatters
+- C++ and C# debuggers:
     - `<F9>` toggle breakpoint
     - `<Space>du` toggle DAP UI
     - `<F5>` starts debugger / Continue
@@ -21,12 +33,12 @@ This is my config for [Neovim v0.11.1](https://github.com/neovim/neovim) powered
     - `<S-F5>` terminate
     - `<Space>dr` restart
     - **All of these mappings can be easily changed to your taste in "dap" section of mappings.lua** 
-- Automatic installation of neccesary LSP servers, DAPs, formatters and linters via mason.nvim
+- Automatic installation of neccesary LSP servers, formatters and linters via mason.nvim
 
 # Defaults
 - NvDash opens at start 
     - You can disable that by editing [chadrc.lua](./lua/chadrc.lua)
-- "chadracula-evondev" theme
+- catppuccin theme
     - You can change that via NvChad, press `<leader>th` to change the theme to your liking *(`<leader>` stands for Space key)* 
 
 # Installation
