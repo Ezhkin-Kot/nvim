@@ -151,6 +151,16 @@ return {
     },
   },
 
+  {
+    "leoluz/nvim-dap-go",
+    requires = { "mfussenegger/nvim-dap" },
+    ft = "go",
+    config = function()
+      require "configs.nvim-dap-go"
+    end,
+    event = "VeryLazy",
+  },
+
   -- test new blink
   -- { import = "nvchad.blink.lazyspec" },
   --
