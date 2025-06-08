@@ -23,9 +23,10 @@ This is my config for [Neovim v0.11.1](https://github.com/neovim/neovim) powered
 - Lua
     - lua-language-server LSP
     - stylua formatters
-- C++ and C# debuggers:
+- Go, C++ and C# debuggers:
     - `<F9>` toggle breakpoint
-    - `<Space>du` toggle DAP UI
+    - `<Space>du` open DAP UI
+    - `<Space>dc` close DAP UI
     - `<F5>` starts debugger / Continue
     - `<F10>` step over
     - `<F11>` step into
