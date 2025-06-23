@@ -5,7 +5,10 @@ local map = vim.keymap.set
 -- DAP
 map("n", "<leader>du", function()
   require("dapui").open()
-end, { desc = "DAP UI Toggle" })
+end, { desc = "DAP UI Open" })
+map("n", "<leader>dc", function()
+  require("dapui").close()
+end, { desc = "DAP UI Close" })
 map("n", "<F5>", function()
   require("dap").continue()
 end, { desc = "DAP: Continue" })
