@@ -6,7 +6,7 @@ local o = vim.o
 
 o.relativenumber = true
 
--- o.cursorlineopt = "both" -- to enable cursorline!
+o.cursorlineopt = "both" -- to enable cursorline!
 o.tabstop = 2
 o.expandtab = true
 o.smartindent = true
