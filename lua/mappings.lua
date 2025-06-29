@@ -34,4 +34,7 @@ end, { desc = "DAP: Restart" })
 map("n", ";", ":", { desc = "CMD enter command mode" })
 map("i", "jk", "<ESC>")
 
+map("v", "<Tab>", ">gv")
+map("v", "<S-Tab>", "<gv")
+
 -- map({ "n", "i", "v" }, "<C-s>", "<cmd> w <cr>")
