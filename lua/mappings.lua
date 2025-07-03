@@ -31,6 +31,14 @@ map("n", "<leader>dr", function()
   require("dap").restart()
 end, { desc = "DAP: Restart" })
 
+-- typst-preview
+map("n", "<leader>tp", function()
+  vim.cmd("TypstPreview")
+end, { desc = "Typst Preview Open" })
+map("n", "<leader>tc", function()
+  vim.cmd("TypstPreviewStop")
+end, { desc = "Typst Preview Close" })
+
 map("n", ";", ":", { desc = "CMD enter command mode" })
 map("i", "jk", "<ESC>")
 
