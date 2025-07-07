@@ -110,9 +110,9 @@ return {
             -- Accept the current completion.
             accept = "<C-z>",
             -- Accept the next word.
-            accept_word = "<C-a>",
+            accept_word = "<C-.>",
             -- Accept the next line.
-            accept_line = false,
+            accept_line = "<C-a>",
             -- Clear the virtual text.
             clear = "<C-x>",
             -- Cycle to the next completion.
