@@ -87,6 +87,17 @@ lspconfig.rust_analyzer.setup {
   }
 }
 
+lspconfig.tinymist.setup {
+  on_attach = on_attach,
+  on_init = on_init,
+  capabilities = capabilities,
+	settings = {
+		formatterMode = "typstyle",
+		exportPdf = "onType",
+		semanticTokens = "disable",
+	},
+}
+
 lspconfig.lua_ls.setup {
   on_attach = on_attach,
   on_init = on_init,
