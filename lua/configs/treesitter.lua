@@ -18,6 +18,7 @@ local options = {
     "markdown",
     "printf",
     "python",
+    "rust",
     "sql",
     "toml",
     "typst",
