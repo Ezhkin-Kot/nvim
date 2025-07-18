@@ -9,6 +9,7 @@ lspconfig.servers = {
   "omnisharp",
   "gopls",
   "rust_analyzer",
+  "bashls"
   -- "html",
   -- "cssls",
 }
@@ -96,6 +97,12 @@ lspconfig.tinymist.setup {
 		exportPdf = "onType",
 		semanticTokens = "disable",
 	},
+}
+
+lspconfig.bashls.setup {
+  on_attach = on_attach,
+  on_init = on_init,
+  capabilities = capabilities,
 }
 
 lspconfig.lua_ls.setup {
