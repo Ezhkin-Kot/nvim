@@ -4,6 +4,7 @@ local options = {
     cpp = { "clang-format" },
     c_sharp = { "csharpier" },
     go = { "gofumpt", "goimports-reviser", "golines" },
+    rust = { "ast_grep" },
     typst = { "typstyle" },
     -- css = { "prettier" },
     -- html = { "prettier" },
