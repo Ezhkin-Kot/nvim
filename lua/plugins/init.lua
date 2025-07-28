@@ -74,12 +74,27 @@ return {
     opts = {},
   },
 
+  { import = "configs.nvim-cmp" },
+
   -- Rust
   {
     "mrcjkb/rustaceanvim",
     version = "^6", -- Recommended
     lazy = false, -- This plugin is already lazy
     ft = "rust",
+    server = {
+      settings = {
+        ["rust-analyzer"] = {
+          checkOnSave = {
+            enable = false,
+          },
+          cargo = {
+            allFeatures = true,
+            autoreload = false,
+          },
+        },
+      },
+    },
   },
 
   {
@@ -87,16 +102,16 @@ return {
     ft = { "toml" },
     config = function()
       require("crates").setup {
-        completion = {
-          crates = {
-            enabled = true,
-          },
-        },
         lsp = {
           enabled = true,
           actions = true,
           completion = true,
           hover = true,
+        },
+        completion = {
+          crates = {
+            enabled = true,
+          },
         },
       }
       require("cmp").setup.buffer {
