@@ -76,27 +76,6 @@ return {
 
   { import = "configs.nvim-cmp" },
 
-  -- Rust
-  {
-    "mrcjkb/rustaceanvim",
-    version = "^6", -- Recommended
-    lazy = false, -- This plugin is already lazy
-    ft = "rust",
-    server = {
-      settings = {
-        ["rust-analyzer"] = {
-          checkOnSave = {
-            enable = false,
-          },
-          cargo = {
-            allFeatures = true,
-            autoreload = false,
-          },
-        },
-      },
-    },
-  },
-
   {
     "saecki/crates.nvim",
     ft = { "toml" },
