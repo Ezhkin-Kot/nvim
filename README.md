@@ -6,7 +6,7 @@ This is my config for [Neovim v0.11.1](https://github.com/neovim/neovim) powered
     - gopls LSP
     - gofumpt, goimports-reviser and golines formatters
 - Rust
-    - rust-analyzer LSPa
+    - rust-analyzer LSP
     - crates.nvim
     - ast_grep formatter
 - C++
