@@ -19,15 +19,19 @@ This is my config for [Neovim v0.11.1](https://github.com/neovim/neovim) powered
     - tinymist LSP
     - typstyle formatter
     - typst-preview
+        - Mappings in normal mode:
+            - `<Space>tp` open preview
+            - `<Space>tc` close preview
 - Lua
     - lua-language-server LSP
     - stylua formatters
-- Code completion with windsurf.nvim:
-    - `<C-z>` accept current completion
-    - `<C-a>` accept the next line
-    - `<C-.>` accept the next word
-    - `<C-;>` cycle to the next completion
-    - `<C-,>` cycle to the previous completion
+- Code completion with windsurf.nvim
+    - Mappings in normal mode:
+        - `<C-z>` accept current completion
+        - `<C-a>` accept the next line
+        - `<C-.>` accept the next word
+        - `<C-;>` cycle to the next completion
+        - `<C-,>` cycle to the previous completion
 - DAP Debugger for the following languages:
     - Go, Rust, C++, C#
     - Debugger mappings:
