@@ -77,6 +77,13 @@ return {
   { import = "configs.nvim-cmp" },
 
   {
+    "mrcjkb/rustaceanvim",
+    version = "^6",
+    lazy = false,
+    ft = { "rust" },
+  },
+
+  {
     "saecki/crates.nvim",
     ft = { "toml" },
     config = function()

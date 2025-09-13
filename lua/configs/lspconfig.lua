@@ -8,7 +8,7 @@ lspconfig.servers = {
   "clangd",
   "omnisharp",
   "gopls",
-  "rust_analyzer",
+  -- "rust_analyzer",
   "bashls",
   -- "html",
   -- "cssls",
