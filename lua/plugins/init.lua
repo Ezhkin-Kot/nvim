@@ -106,6 +106,8 @@ return {
     end,
   },
 
+  { "glacambre/firenvim", build = ":call firenvim#install(0)" },
+
   -- Code completion
   {
     "Exafunction/windsurf.nvim",
