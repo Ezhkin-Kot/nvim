@@ -1,45 +1,34 @@
-require("nvchad.configs.lspconfig").defaults()
-
-local lspconfig = require "lspconfig"
-
-lspconfig.servers = {
-  "lua_ls",
-  "tinymist",
-  "clangd",
-  "omnisharp",
-  "gopls",
-  -- "rust_analyzer",
-  "bashls",
-  -- "html",
-  -- "cssls",
-}
+local base = require "nvchad.configs.lspconfig"
+local on_attach = base.on_attach
+local on_init = base.on_init
+local capabilities = base.capabilities
 
 local base = require "nvchad.configs.lspconfig"
 local on_attach = base.on_attach
 local on_init = base.on_init
 local capabilities = base.capabilities
 
--- lspconfig.omnisharp.setup({
+-- vim.lsp.config("omnisharp", {
 --   cmd = { "omnisharp" },
 --   filetypes = { "cs", "vb" },
 --   root_dir = lspconfig.util.root_pattern("*.sln", "*.csproj", ".git"),
 -- })
+-- vim.lsp.enable("omnisharp")
 
 -- list of servers configured with default config.
-local default_servers = {
-  "gopls",
-}
+local servers = require "configs.lsp-servers"
 
 -- lsps with default config
-for _, lsp in ipairs(default_servers) do
-  lspconfig[lsp].setup {
+for _, lsp in ipairs(servers) do
+  vim.lsp.config(lsp, {
     on_attach = on_attach,
     on_init = on_init,
     capabilities = capabilities,
-  }
+  })
+  vim.lsp.enable(lsp)
 end
 
-lspconfig.clangd.setup {
+vim.lsp.config("clangd", {
   on_attach = function(client, bufnr)
     client.server_capabilities.signatureHelpProvider = false
     client.server_capabilities.documentFormattingProvider = false
@@ -48,9 +37,10 @@ lspconfig.clangd.setup {
   end,
   on_init = on_init,
   capabilities = capabilities,
-}
+})
+vim.lsp.enable "clangd"
 
-lspconfig.gopls.setup {
+vim.lsp.config("gopls", {
   on_attach = function(client, bufnr)
     client.server_capabilities.documentFormattingProvider = false
     client.server_capabilities.documentRangeFormattingProvider = false
@@ -60,20 +50,19 @@ lspconfig.gopls.setup {
   capabilities = capabilities,
   cmd = { "gopls" },
   filetypes = { "go", "gomod", "gotmpl", "gowork" },
-  root_dir = lspconfig.util.root_pattern("go.work", "go.mod", ".git"),
+  root_dir = vim.fs.root(0, { "go.work", "go.mod", ".git" }),
   settings = {
     gopls = {
-      analyses = {
-        unusedparams = true,
-      },
+      analyses = { unusedparams = true },
       completeUnimported = true,
       usePlaceholders = true,
       staticcheck = true,
     },
   },
-}
+})
+vim.lsp.enable "gopls"
 
-lspconfig.tinymist.setup {
+vim.lsp.config("tinymist", {
   on_attach = on_attach,
   on_init = on_init,
   capabilities = capabilities,
@@ -82,15 +71,10 @@ lspconfig.tinymist.setup {
     exportPdf = "onType",
     semanticTokens = "disable",
   },
-}
+})
+vim.lsp.enable "tinymist"
 
-lspconfig.bashls.setup {
-  on_attach = on_attach,
-  on_init = on_init,
-  capabilities = capabilities,
-}
-
-lspconfig.lua_ls.setup {
+vim.lsp.config("lua_ls", {
   on_attach = on_attach,
   on_init = on_init,
   capabilities = capabilities,
@@ -114,4 +98,5 @@ lspconfig.lua_ls.setup {
       },
     },
   },
-}
+})
+vim.lsp.enable "lua_ls"
