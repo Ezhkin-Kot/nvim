@@ -12,9 +12,9 @@ o.expandtab = true
 o.smartindent = true
 o.shiftwidth = 2
 
--- tab settings for C/C++
+-- tab settings for C/C++/C#
 vim.api.nvim_create_autocmd("FileType", {
-  pattern = { "c", "cpp" },
+  pattern = { "c", "cpp", "cs" },
   callback = function()
     vim.opt_local.tabstop = 4
     vim.opt_local.shiftwidth = 4
