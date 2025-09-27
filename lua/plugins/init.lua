@@ -128,7 +128,7 @@ return {
         },
       }
       if vim.g.started_by_firenvim then
-        vim.o.guifont = "JetBrainsMono Nerd Font:h22"
+        vim.o.guifont = "JetBrainsMono Nerd Font:h18"
       end
     end,
   },
