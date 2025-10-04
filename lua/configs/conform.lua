@@ -35,11 +35,16 @@ local options = {
     -- Lua
     stylua = {
       prepend_args = {
-        "--column-width", "80",
-        "--line-endings", "Unix",
-        "--indent-type", "Spaces",
-        "--indent-width", "2",
-        "--quote-style", "AutoPreferDouble",
+        "--column-width",
+        "80",
+        "--line-endings",
+        "Unix",
+        "--indent-type",
+        "Spaces",
+        "--indent-width",
+        "2",
+        "--quote-style",
+        "AutoPreferDouble",
       },
     },
   },
