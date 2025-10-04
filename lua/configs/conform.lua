@@ -8,6 +8,7 @@ local options = {
     typst = { "typstyle" },
     -- css = { "prettier" },
     -- html = { "prettier" },
+    bash = { "shfmt" },
     python = { "black" },
   },
 
