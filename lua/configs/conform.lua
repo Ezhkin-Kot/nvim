@@ -9,6 +9,7 @@ local options = {
     -- css = { "prettier" },
     -- html = { "prettier" },
     bash = { "shfmt" },
+    asm = { "asmfmt" },
     python = { "black" },
   },
 

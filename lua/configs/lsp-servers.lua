@@ -6,4 +6,5 @@ return {
   "gopls",
   "bashls",
   "pyright",
+  "asm_lsp",
 }
