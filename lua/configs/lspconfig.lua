@@ -3,18 +3,6 @@ local on_attach = base.on_attach
 local on_init = base.on_init
 local capabilities = base.capabilities
 
-local base = require "nvchad.configs.lspconfig"
-local on_attach = base.on_attach
-local on_init = base.on_init
-local capabilities = base.capabilities
-
--- vim.lsp.config("omnisharp", {
---   cmd = { "omnisharp" },
---   filetypes = { "cs", "vb" },
---   root_dir = lspconfig.util.root_pattern("*.sln", "*.csproj", ".git"),
--- })
--- vim.lsp.enable("omnisharp")
-
 -- list of servers configured with default config.
 local servers = require "configs.lsp-servers"
 
@@ -100,3 +88,10 @@ vim.lsp.config("lua_ls", {
   },
 })
 vim.lsp.enable "lua_ls"
+
+-- vim.lsp.config("omnisharp", {
+--   cmd = { "omnisharp" },
+--   filetypes = { "cs", "vb" },
+--   root_dir = lspconfig.util.root_pattern("*.sln", "*.csproj", ".git"),
+-- })
+-- vim.lsp.enable("omnisharp")
