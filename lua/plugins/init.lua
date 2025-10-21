@@ -133,6 +133,46 @@ return {
     end,
   },
 
+  {
+    "akinsho/git-conflict.nvim",
+    version = "*",
+    event = "VeryLazy",
+    config = function()
+      require("git-conflict").setup {
+        default_mappings = true,
+        disable_diagnostics = false,
+        highlights = {
+          incoming = "DiffText",
+          current = "DiffAdd",
+        },
+      }
+    end,
+  },
+
+  {
+    "sindrets/diffview.nvim",
+    event = "VeryLazy",
+    dependencies = { "nvim-lua/plenary.nvim" },
+    config = function()
+      require("diffview").setup {
+        use_icons = true,
+        enhanced_diff_hl = true,
+        view = {
+          merge_tool = {
+            layout = "diff3_mixed",
+            disable_diagnostics = true,
+          },
+        },
+        keymaps = {
+          view = {
+            ["<leader>df"] = "<cmd>DiffviewOpen<CR>",
+            ["<leader>q"] = "<cmd>DiffviewClose<CR>",
+          },
+        },
+      }
+    end,
+  },
+
   -- Code completion
   {
     "Exafunction/windsurf.nvim",
