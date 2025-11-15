@@ -25,6 +25,7 @@ vim.lsp.config("clangd", {
   end,
   on_init = on_init,
   capabilities = capabilities,
+  cmd = { "clangd", "--compile-commands-dir=build" },
 })
 vim.lsp.enable "clangd"
 
