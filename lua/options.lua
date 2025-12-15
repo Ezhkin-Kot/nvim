@@ -22,6 +22,14 @@ vim.api.nvim_create_autocmd("FileType", {
   end,
 })
 
+-- ino (for Arduino programs)
+vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
+  pattern = "*.ino",
+  callback = function()
+    vim.bo.filetype = "cpp"
+  end,
+})
+
 vim.api.nvim_create_autocmd("User", {
   pattern = "GitConflictDetected",
   callback = function()
