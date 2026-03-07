@@ -86,91 +86,28 @@ return {
   {
     "saecki/crates.nvim",
     ft = { "toml" },
-    config = function()
-      require("crates").setup {
-        lsp = {
-          enabled = true,
-          actions = true,
-          completion = true,
-          hover = true,
-        },
-        completion = {
-          crates = {
-            enabled = true,
-          },
-        },
-      }
-      require("cmp").setup.buffer {
-        sources = { { name = "crates" } },
-      }
-    end,
+    config = require "configs.crates",
   },
 
   {
     "glacambre/firenvim",
     build = ":call firenvim#install(0)",
     lazy = false,
-    config = function()
-      vim.api.nvim_create_autocmd({ "BufEnter" }, {
-        pattern = "practicum.yandex.ru_*.txt",
-        command = "set filetype=python",
-      })
-      vim.g.firenvim_config = {
-        globalSettings = { alt = "all" },
-        localSettings = {
-          [".*"] = {
-            cmdline = "neovim",
-            content = "text",
-            priority = 0,
-            selector = "textarea",
-            takeover = "never",
-          },
-        },
-      }
-      if vim.g.started_by_firenvim then
-        vim.o.guifont = "JetBrainsMono Nerd Font:h18"
-      end
-    end,
+    config = require "configs.firenvim",
   },
 
   {
     "akinsho/git-conflict.nvim",
     version = "*",
     event = "VeryLazy",
-    config = function()
-      require("git-conflict").setup {
-        default_mappings = true,
-        disable_diagnostics = false,
-        highlights = {
-          incoming = "DiffText",
-          current = "DiffAdd",
-        },
-      }
-    end,
+    opts = require "configs.git-conflict",
   },
 
   {
     "sindrets/diffview.nvim",
     event = "VeryLazy",
     dependencies = { "nvim-lua/plenary.nvim" },
-    config = function()
-      require("diffview").setup {
-        use_icons = true,
-        enhanced_diff_hl = true,
-        view = {
-          merge_tool = {
-            layout = "diff3_mixed",
-            disable_diagnostics = true,
-          },
-        },
-        keymaps = {
-          view = {
-            ["<leader>df"] = "<cmd>DiffviewOpen<CR>",
-            ["<leader>q"] = "<cmd>DiffviewClose<CR>",
-          },
-        },
-      }
-    end,
+    opts = require "configs.diffview",
   },
 
   { "nvim-lua/plenary.nvim", lazy = true },
@@ -178,140 +115,10 @@ return {
   {
     "drop-stones/im-switch.nvim",
     event = "VeryLazy",
-    opts = {
-      macos = {
-        enabled = false, -- Set to true if you are on macOS
-        default_im = "com.apple.keylayout.ABC", -- or your preferred input method
-      },
-      linux = {
-        enabled = false, -- Set to true if you are on Linux
-        default_im = "keyboard-us", -- or your preferred input method
-        get_im_command = { "fcitx5-remote", "-n" }, -- { "ibus", "engine" }
-        set_im_command = { "fcitx5-remote", "-s" }, -- { "ibus", "engine" }
-      },
-    },
+    opts = require "configs.im-switch",
   },
 
-  {
-    "folke/snacks.nvim",
-    priority = 1000,
-    lazy = false,
-    ---@type snacks.Config
-    opts = {
-      -- your configuration comes here
-      -- or leave it empty to use the default settings
-      -- refer to the configuration section below
-      bigfile = { enabled = true },
-      dim = { enabled = true },
-      gh = { enabled = true },
-      indent = {
-        enabled = true,
-        char = "│",
-        scope = {
-          enabled = true,
-          char = "│",
-          underline = false,
-        },
-        chunk = {
-          enabled = true,
-          char = {
-            corner_top = "╭",
-            corner_bottom = "╰",
-            arrow = "►",
-          },
-        },
-      },
-      notifier = { enabled = true },
-      picker = { enabled = true },
-      quickfile = { enabled = true },
-      scope = { enabled = true },
-      scroll = { enabled = true },
-      words = { enabled = true },
-      zen = { enabled = true },
-    },
-    keys = {
-      -- gh
-      {
-        "<leader>gi",
-        function()
-          Snacks.picker.gh_issue()
-        end,
-        desc = "GitHub Issues (open)",
-      },
-      {
-        "<leader>gI",
-        function()
-          Snacks.picker.gh_issue { state = "all" }
-        end,
-        desc = "GitHub Issues (all)",
-      },
-      {
-        "<leader>gp",
-        function()
-          Snacks.picker.gh_pr()
-        end,
-        desc = "GitHub Pull Requests (open)",
-      },
-      {
-        "<leader>gP",
-        function()
-          Snacks.picker.gh_pr { state = "all" }
-        end,
-        desc = "GitHub Pull Requests (all)",
-      },
-      -- Search
-      {
-        "<leader>sd",
-        function()
-          Snacks.picker.diagnostics()
-        end,
-        desc = "Diagnostics",
-      },
-      {
-        "<leader>sh",
-        function()
-          Snacks.picker.help()
-        end,
-        desc = "Help Pages",
-      },
-      {
-        "<leader>si",
-        function()
-          Snacks.picker.icons()
-        end,
-        desc = "Icons",
-      },
-      {
-        "<leader>sk",
-        function()
-          Snacks.picker.keymaps()
-        end,
-        desc = "Keymaps",
-      },
-      {
-        "<leader>sm",
-        function()
-          Snacks.picker.marks()
-        end,
-        desc = "Marks",
-      },
-      -- Other
-      {
-        "<leader>z",
-        function()
-          Snacks.zen()
-        end,
-        desc = "Toggle Zen Mode",
-      },
-      {
-        "<leader>ln",
-        function()
-          Snacks.picker.notifications()
-        end,
-        desc = "Notification History",
-      },
-    },
-  },
+  { import = "configs.snacks" },
 
   -- {
   --   "nvim-mini/mini.animate",
@@ -328,53 +135,7 @@ return {
       "nvim-lua/plenary.nvim",
       "hrsh7th/nvim-cmp",
     },
-    config = function()
-      require("codeium").setup {
-        -- Optionally disable cmp source if using virtual text only
-        enable_cmp_source = false,
-        virtual_text = {
-          enabled = true,
-
-          -- These are the defaults
-
-          -- Set to true if you never want completions to be shown automatically.
-          manual = false,
-          -- A mapping of filetype to true or false, to enable virtual text.
-          filetypes = {},
-          -- Whether to enable virtual text of not for filetypes not specifically listed above.
-          default_filetype_enabled = true,
-          -- How long to wait (in ms) before requesting completions after typing stops.
-          idle_delay = 75,
-          -- Priority of the virtual text. This usually ensures that the completions appear on top of
-          -- other plugins that also add virtual text, such as LSP inlay hints, but can be modified if
-          -- desired.
-          virtual_text_priority = 65535,
-          -- Set to false to disable all key bindings for managing completions.
-          map_keys = true,
-          -- The key to press when hitting the accept keybinding but no completion is showing.
-          -- Defaults to \t normally or <c-n> when a popup is showing.
-          accept_fallback = nil,
-          -- Key bindings for managing completions in virtual text mode.
-          key_bindings = {
-            -- Accept the current completion.
-            accept = "<C-z>",
-            -- Accept the next word.
-            accept_word = "<C-.>",
-            -- Accept the next line.
-            accept_line = "<C-a>",
-            -- Clear the virtual text.
-            clear = "<C-x>",
-            -- Cycle to the next completion.
-            next = "<C-;>",
-            -- Cycle to the previous completion.
-            prev = "<C-,>",
-          },
-        },
-        -- require("codeium.virtual_text").set_statusbar_refresh(function()
-        --   require("lualine").refresh()
-        -- end),
-      }
-    end,
+    config = require "configs.windsurf",
     event = "BufEnter",
   },
 
