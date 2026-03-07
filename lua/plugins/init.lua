@@ -180,7 +180,7 @@ return {
     event = "VeryLazy",
     opts = {
       macos = {
-        enabled = true, -- Set to true if you are on macOS
+        enabled = false, -- Set to true if you are on macOS
         default_im = "com.apple.keylayout.ABC", -- or your preferred input method
       },
       linux = {
@@ -191,6 +191,135 @@ return {
       },
     },
   },
+
+  {
+    "folke/snacks.nvim",
+    priority = 1000,
+    lazy = false,
+    ---@type snacks.Config
+    opts = {
+      -- your configuration comes here
+      -- or leave it empty to use the default settings
+      -- refer to the configuration section below
+      bigfile = { enabled = true },
+      dim = { enabled = true },
+      gh = { enabled = true },
+      indent = {
+        enabled = true,
+        char = "│",
+        scope = {
+          enabled = true,
+          char = "│",
+          underline = false,
+        },
+        chunk = {
+          enabled = true,
+          char = {
+            corner_top = "╭",
+            corner_bottom = "╰",
+            arrow = "►",
+          },
+        },
+      },
+      notifier = { enabled = true },
+      picker = { enabled = true },
+      quickfile = { enabled = true },
+      scope = { enabled = true },
+      scroll = { enabled = true },
+      words = { enabled = true },
+      zen = { enabled = true },
+    },
+    keys = {
+      -- gh
+      {
+        "<leader>gi",
+        function()
+          Snacks.picker.gh_issue()
+        end,
+        desc = "GitHub Issues (open)",
+      },
+      {
+        "<leader>gI",
+        function()
+          Snacks.picker.gh_issue { state = "all" }
+        end,
+        desc = "GitHub Issues (all)",
+      },
+      {
+        "<leader>gp",
+        function()
+          Snacks.picker.gh_pr()
+        end,
+        desc = "GitHub Pull Requests (open)",
+      },
+      {
+        "<leader>gP",
+        function()
+          Snacks.picker.gh_pr { state = "all" }
+        end,
+        desc = "GitHub Pull Requests (all)",
+      },
+      -- Search
+      {
+        "<leader>sd",
+        function()
+          Snacks.picker.diagnostics()
+        end,
+        desc = "Diagnostics",
+      },
+      {
+        "<leader>sh",
+        function()
+          Snacks.picker.help()
+        end,
+        desc = "Help Pages",
+      },
+      {
+        "<leader>si",
+        function()
+          Snacks.picker.icons()
+        end,
+        desc = "Icons",
+      },
+      {
+        "<leader>sk",
+        function()
+          Snacks.picker.keymaps()
+        end,
+        desc = "Keymaps",
+      },
+      {
+        "<leader>sm",
+        function()
+          Snacks.picker.marks()
+        end,
+        desc = "Marks",
+      },
+      -- Other
+      {
+        "<leader>z",
+        function()
+          Snacks.zen()
+        end,
+        desc = "Toggle Zen Mode",
+      },
+      {
+        "<leader>ln",
+        function()
+          Snacks.picker.notifications()
+        end,
+        desc = "Notification History",
+      },
+    },
+  },
+
+  -- {
+  --   "nvim-mini/mini.animate",
+  --   version = false,
+  --   config = function()
+  --     require("mini.animate").setup(),
+  --   end,
+  -- },
 
   -- Code completion
   {
