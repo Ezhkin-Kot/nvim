@@ -29,15 +29,3 @@ vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
     vim.bo.filetype = "cpp"
   end,
 })
-
-vim.api.nvim_create_autocmd("User", {
-  pattern = "GitConflictDetected",
-  callback = function()
-    vim.schedule(function()
-      local ok, diffview = pcall(require, "diffview")
-      if ok then
-        vim.cmd "DiffviewOpen"
-      end
-    end)
-  end,
-})
