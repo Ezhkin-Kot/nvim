@@ -29,6 +29,7 @@ return {
     quickfile = { enabled = true },
     scope = { enabled = true },
     scroll = { enabled = true },
+    toggle = { enabled = true },
     words = { enabled = true },
     zen = { enabled = true },
   },
@@ -45,10 +46,12 @@ return {
     { "<leader>si", function() require("snacks").picker.icons() end, desc = "Icons" },
     { "<leader>sk", function() require("snacks").picker.keymaps() end, desc = "Keymaps" },
     { "<leader>sm", function() require("snacks").picker.marks() end, desc = "Marks" },
+    { "<leader>sM", function() require("snacks").picker.man() end, desc = "Man Pages" },
+    { "<leader>sq", function() require("snacks").picker.qflist() end, desc = "Quickfix List" },
+    { "<leader>su", function() require("snacks").picker.undo() end, desc = "Undo History" },
     -- Other
     { "<leader>z", function() require("snacks").zen() end, desc = "Toggle Zen Mode" },
-    { "<leader>ln", function() require("snacks").picker.notifications() end, desc = "Notification History" },
+    { "<leader>sn", function() require("snacks").picker.notifications() end, desc = "Notification History" },
     -- stylua: ignore end
   },
 }
-
