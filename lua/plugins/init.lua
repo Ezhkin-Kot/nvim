@@ -121,21 +121,14 @@ return {
   { import = "configs.snacks" },
 
   {
-    "echasnovski/mini.animate",
+    "echasnovski/mini.nvim",
     event = "VeryLazy",
     version = false,
     config = function()
-      require("configs.mini-animate").setup()
+      require "configs.mini-animate"
+      require "configs.mini-surround"
     end,
   },
-
-  -- {
-  --   "nvim-mini/mini.animate",
-  --   version = false,
-  --   config = function()
-  --     require("mini.animate").setup(),
-  --   end,
-  -- },
 
   -- Code completion
   {
