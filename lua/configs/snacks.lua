@@ -33,86 +33,22 @@ return {
     zen = { enabled = true },
   },
   keys = {
+    -- stylua: ignore start
     -- gh
-    {
-      "<leader>gi",
-      function()
-        require("snacks").picker.gh_issue()
-      end,
-      desc = "GitHub Issues (open)",
-    },
-    {
-      "<leader>gI",
-      function()
-        require("snacks").picker.gh_issue { state = "all" }
-      end,
-      desc = "GitHub Issues (all)",
-    },
-    {
-      "<leader>gp",
-      function()
-        require("snacks").picker.gh_pr()
-      end,
-      desc = "GitHub Pull Requests (open)",
-    },
-    {
-      "<leader>gP",
-      function()
-        require("snacks").picker.gh_pr { state = "all" }
-      end,
-      desc = "GitHub Pull Requests (all)",
-    },
+    { "<leader>gi", function() require("snacks").picker.gh_issue() end, desc = "GitHub Issues (open)" },
+    { "<leader>gI", function() require("snacks").picker.gh_issue { state = "all" } end, desc = "GitHub Issues (all)" },
+    { "<leader>gp", function() require("snacks").picker.gh_pr() end, desc = "GitHub Pull Requests (open)" },
+    { "<leader>gP", function() require("snacks").picker.gh_pr { state = "all" } end, desc = "GitHub Pull Requests (all)" },
     -- Search
-    {
-      "<leader>sd",
-      function()
-        require("snacks").picker.diagnostics()
-      end,
-      desc = "Diagnostics",
-    },
-    {
-      "<leader>sh",
-      function()
-        require("snacks").picker.help()
-      end,
-      desc = "Help Pages",
-    },
-    {
-      "<leader>si",
-      function()
-        require("snacks").picker.icons()
-      end,
-      desc = "Icons",
-    },
-    {
-      "<leader>sk",
-      function()
-        require("snacks").picker.keymaps()
-      end,
-      desc = "Keymaps",
-    },
-    {
-      "<leader>sm",
-      function()
-        require("snacks").picker.marks()
-      end,
-      desc = "Marks",
-    },
+    { "<leader>sd", function() require("snacks").picker.diagnostics() end, desc = "Diagnostics" },
+    { "<leader>sh", function() require("snacks").picker.help() end, desc = "Help Pages" },
+    { "<leader>si", function() require("snacks").picker.icons() end, desc = "Icons" },
+    { "<leader>sk", function() require("snacks").picker.keymaps() end, desc = "Keymaps" },
+    { "<leader>sm", function() require("snacks").picker.marks() end, desc = "Marks" },
     -- Other
-    {
-      "<leader>z",
-      function()
-        require("snacks").zen()
-      end,
-      desc = "Toggle Zen Mode",
-    },
-    {
-      "<leader>ln",
-      function()
-        require("snacks").picker.notifications()
-      end,
-      desc = "Notification History",
-    },
+    { "<leader>z", function() require("snacks").zen() end, desc = "Toggle Zen Mode" },
+    { "<leader>ln", function() require("snacks").picker.notifications() end, desc = "Notification History" },
+    -- stylua: ignore end
   },
 }
 
