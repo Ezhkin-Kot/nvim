@@ -120,6 +120,15 @@ return {
 
   { import = "configs.snacks" },
 
+  {
+    "echasnovski/mini.animate",
+    event = "VeryLazy",
+    version = false,
+    config = function()
+      require("configs.mini-animate").setup()
+    end,
+  },
+
   -- {
   --   "nvim-mini/mini.animate",
   --   version = false,
