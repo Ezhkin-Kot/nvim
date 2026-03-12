@@ -50,8 +50,21 @@ return {
     { "<leader>sq", function() require("snacks").picker.qflist() end, desc = "Quickfix List" },
     { "<leader>su", function() require("snacks").picker.undo() end, desc = "Undo History" },
     -- Other
-    { "<leader>z", function() require("snacks").zen() end, desc = "Toggle Zen Mode" },
+    { "<leader>Z", function() require("snacks").zen() end, desc = "Toggle Zen Mode" },
     { "<leader>sn", function() require("snacks").picker.notifications() end, desc = "Notification History" },
     -- stylua: ignore end
   },
+  init = function()
+    vim.api.nvim_create_autocmd("User", {
+      pattern = "VeryLazy",
+      callback = function()
+        -- Create some toggle mappings
+        Snacks.toggle.option("spell", { name = "Spelling" }):map "<leader>ts"
+        Snacks.toggle.diagnostics():map "<leader>td"
+        Snacks.toggle.inlay_hints():map "<leader>th"
+        Snacks.toggle.indent():map "<leader>ti"
+        Snacks.toggle.dim():map "<leader>z"
+      end,
+    })
+  end,
 }

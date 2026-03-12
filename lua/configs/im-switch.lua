@@ -1,6 +1,6 @@
 return {
   macos = {
-    enabled = false, -- Set to true if you are on macOS
+    enabled = true, -- Set to true if you are on macOS
     default_im = "com.apple.keylayout.ABC", -- or your preferred input method
   },
   linux = {
